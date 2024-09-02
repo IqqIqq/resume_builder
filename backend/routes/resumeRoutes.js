@@ -1,17 +1,7 @@
 const express = require('express');
 const Resume = require('../models/Resume');
-const { pipeline } = require('stream');
-const { pipeline: hfPipeline } = require('transformers');
 
 const router = express.Router();
-
-const generator = hfPipeline('text2text-generation', 'google/flan-t5-small');
-
-router.post('/generate', async (req, res) => {
-    const { prompt } = req.body;
-    const response = await generator(prompt, { max_length: 400 });
-    res.json({ text: response[0].generated_text });
-});
 
 router.post('/create', async (req, res) => {
     const resume = new Resume(req.body);
@@ -22,6 +12,21 @@ router.post('/create', async (req, res) => {
 router.get('/', async (req, res) => {
     const resumes = await Resume.find();
     res.json(resumes);
+});
+
+router.get('/:id', async (req, res) => {
+    const resume = await Resume.findById(req.params.id);
+    res.json(resume);
+});
+
+router.put('/:id', async (req, res) => {
+    const resume = await Resume.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(resume);
+});
+
+router.delete('/:id', async (req, res) => {
+    await Resume.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Resume deleted' });
 });
 
 module.exports = router;

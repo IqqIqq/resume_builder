@@ -5,7 +5,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.12.3",
-    "cors": "^2.8.5",
+    "cors": "^2.8.5"
   },
   "scripts": {
     "start": "node app.js"

@@ -1,11 +1,11 @@
 const express = require('express');
 const Resume = require('../models/Resume');
 const { pipeline } = require('stream');
-const { HuggingFacePipeline } = require('huggingface-pipeline');
+const { pipeline: hfPipeline } = require('transformers');
 
 const router = express.Router();
 
-const generator = new HuggingFacePipeline('text2text-generation', 'google/flan-t5-small');
+const generator = hfPipeline('text2text-generation', 'google/flan-t5-small');
 
 router.post('/generate', async (req, res) => {
     const { prompt } = req.body;

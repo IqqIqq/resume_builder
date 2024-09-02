@@ -6,7 +6,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.12.3",
     "cors": "^2.8.5",
-    "huggingface-pipeline": "^0.1.2"
+    "transformers": "^4.11.3"
   },
   "scripts": {
     "start": "node app.js"

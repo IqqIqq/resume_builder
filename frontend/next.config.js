@@ -46,6 +46,15 @@ const nextConfig = {
     };
     return config;
   },
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+      // 只包含没有问题的页面
+    }
+  },
 }
 
 module.exports = withPlugins([withTM], nextConfig);

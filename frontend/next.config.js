@@ -1,4 +1,4 @@
-const withTM = require('next-transpile-modules')(['@ant-design/icons']);
+const withTM = require('next-transpile-modules')(['@ant-design/icons', 'rc-util', 'antd']);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,7 +8,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8000/api/:path*', // 指向您的后端 API
+        destination: process.env.API_URL + '/:path*', // 使用环境变量
       },
     ]
   },

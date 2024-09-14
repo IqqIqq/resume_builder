@@ -9,16 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^5.20.6",
+    "axios": "^0.21.1",
     "next": "latest",
+    "rc-util": "^5.43.0",
     "react": "latest",
-    "react-dom": "latest",
-    "antd": "^4.16.13",
-    "axios": "^0.21.1"
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@types/react": "latest",
     "@types/node": "latest",
-    "typescript": "latest",
-    "next-transpile-modules": "^10.0.0"
+    "@types/react": "latest",
+    "next-transpile-modules": "^10.0.1",
+    "typescript": "latest"
   }
 }

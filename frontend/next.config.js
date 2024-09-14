@@ -11,8 +11,11 @@ const withTM = require('next-transpile-modules')([
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+  reactStrictMode: false,
+  swcMinify: false,
+  experimental: {
+    esmExternals: false
+  },
   async rewrites() {
     return [
       {

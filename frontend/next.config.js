@@ -8,7 +8,9 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: process.env.API_URL + '/:path*', // 使用环境变量
+        destination: process.env.API_URL 
+          ? `${process.env.API_URL}/:path*`
+          : 'http://localhost:8000/api/:path*', // 提供一个默认值
       },
     ]
   },

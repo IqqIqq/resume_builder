@@ -1,4 +1,5 @@
-const withTM = require('next-transpile-modules')(['@ant-design/icons', 'rc-util', 'antd']);
+const withTM = require('next-transpile-modules')(['@ant-design/icons', 'rc-util', 'antd', 'rc-pagination']);
+const withPlugins = require('next-compose-plugins');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -10,10 +11,11 @@ const nextConfig = {
         source: '/api/:path*',
         destination: process.env.API_URL 
           ? `${process.env.API_URL}/:path*`
-          : 'http://localhost:8000/api/:path*', // 提供一个默认值
+          : 'http://localhost:8000/api/:path*',
       },
     ]
   },
+  transpilePackages: ['antd', '@ant-design/icons', 'rc-util', 'rc-pagination'],
 }
 
-module.exports = withTM(nextConfig);
+module.exports = withPlugins([withTM], nextConfig);

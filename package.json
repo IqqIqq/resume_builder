@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/node": "latest",
     "@types/react": "latest",
+    "next-compose-plugins": "^2.2.1",
     "next-transpile-modules": "^10.0.1",
     "typescript": "latest"
   }

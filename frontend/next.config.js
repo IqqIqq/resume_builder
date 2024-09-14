@@ -1,4 +1,12 @@
-const withTM = require('next-transpile-modules')(['@ant-design/icons', 'rc-util', 'antd', 'rc-pagination', 'rc-picker']);
+const withAntdLess = require('next-plugin-antd-less');
+const withTM = require('next-transpile-modules')([
+  '@ant-design/icons', 
+  'rc-util', 
+  'antd', 
+  'rc-pagination', 
+  'rc-picker',
+  'rc-notification'
+]);
 const withPlugins = require('next-compose-plugins');
 
 /** @type {import('next').NextConfig} */
@@ -15,7 +23,14 @@ const nextConfig = {
       },
     ]
   },
-  transpilePackages: ['antd', '@ant-design/icons', 'rc-util', 'rc-pagination', 'rc-picker'],
+  transpilePackages: [
+    'antd', 
+    '@ant-design/icons', 
+    'rc-util', 
+    'rc-pagination', 
+    'rc-picker',
+    'rc-notification'
+  ],
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -24,8 +39,19 @@ const nextConfig = {
         module: false,
       };
     }
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@babel/runtime': '@babel/runtime-corejs3',
+    };
     return config;
   },
 }
 
-module.exports = withPlugins([withTM], nextConfig);
+module.exports = withPlugins([
+  [withAntdLess, {
+    lessVarsFilePath: './styles/variables.less',
+    lessVarsFilePathAppendToEndOfContent: false,
+    cssLoaderOptions: {},
+  }],
+  withTM
+], nextConfig);

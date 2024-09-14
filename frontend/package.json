@@ -17,14 +17,14 @@
     "@ant-design/icons": "^4.8.0",
     "rc-util": "^5.27.0",
     "rc-pagination": "^3.2.0",
-    "rc-picker": "^3.1.4"
+    "rc-picker": "^3.1.4",
+    "rc-notification": "^4.6.0"
   },
  
   "devDependencies": {
-    "@types/react": "latest",
-    "@types/node": "latest",
-    "typescript": "latest",
+    "next-transpile-modules": "^10.0.0",
     "next-compose-plugins": "^2.2.1",
-    "next-transpile-modules": "^10.0.0"
+    "next-plugin-antd-less": "^1.8.0",
+    "@babel/runtime-corejs3": "^7.15.4"
   }
 }

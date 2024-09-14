@@ -71,3 +71,18 @@ async def optimize_resume(request: OptimizeRequest):
     response = generator(prompt, max_length=500, num_return_sequences=1)
     optimized_resume = response[0]['generated_text'].split("Optimized resume:")[1].strip()
     return {"optimized_resume": optimized_resume}
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
+class LoginResponse(BaseModel):
+    token: str
+
+@app.post("/api/login", response_model=LoginResponse)
+async def login(request: LoginRequest):
+    # 这里应该实现实际的用户认证逻辑
+    if request.username == "admin" and request.password == "password":
+        # 生成并返回一个认证token
+        return {"token": "fake-jwt-token"}
+    else:
+        raise HTTPException(status_code=401, detail="Incorrect username or password")

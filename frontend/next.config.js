@@ -1,13 +1,13 @@
-const withAntdLess = require('next-plugin-antd-less');
+const withPlugins = require('next-compose-plugins');
 const withTM = require('next-transpile-modules')([
   '@ant-design/icons', 
   'rc-util', 
   'antd', 
   'rc-pagination', 
   'rc-picker',
-  'rc-notification'
+  'rc-notification',
+  'rc-tooltip'
 ]);
-const withPlugins = require('next-compose-plugins');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -29,7 +29,8 @@ const nextConfig = {
     'rc-util', 
     'rc-pagination', 
     'rc-picker',
-    'rc-notification'
+    'rc-notification',
+    'rc-tooltip'
   ],
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -47,11 +48,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPlugins([
-  [withAntdLess, {
-    lessVarsFilePath: './styles/variables.less',
-    lessVarsFilePathAppendToEndOfContent: false,
-    cssLoaderOptions: {},
-  }],
-  withTM
-], nextConfig);
+module.exports = withPlugins([withTM], nextConfig);

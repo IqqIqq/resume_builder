@@ -12,15 +12,19 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "antd": "^4.16.13",
+    "antd": "^4.24.0",
     "axios": "^0.21.1",
-        "@ant-design/icons": "latest"
+    "@ant-design/icons": "^4.8.0",
+    "rc-util": "^5.27.0",
+    "rc-pagination": "^3.2.0",
+    "rc-picker": "^3.1.4"
   },
+ 
   "devDependencies": {
     "@types/react": "latest",
     "@types/node": "latest",
     "typescript": "latest",
-        "next-compose-plugins": "latest",
+    "next-compose-plugins": "^2.2.1",
     "next-transpile-modules": "^10.0.0"
   }
 }

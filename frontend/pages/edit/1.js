@@ -4,6 +4,11 @@ import axios from 'axios';
 import { message } from 'antd';
 import Layout from '../../components/Layout';
 import ResumeForm from '../../components/ResumeForm';
+import dynamic from 'next/dynamic'
+
+const AntdIcon = dynamic(() => import('@ant-design/icons'), { ssr: false })
+
+// 使用 AntdIcon 组件
 
 export default function EditResume() {
     const router = useRouter();

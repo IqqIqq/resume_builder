@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
-    "antd": "^5.20.6"
+    "antd": "^5.20.6",
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "next-transpile-modules": "^10.0.1"
   }
 }
